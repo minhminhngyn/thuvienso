@@ -135,12 +135,6 @@ Thêm mới Thủ Thư
           minlength: 6,
           maxlength: 200
         },
-        khoa_id: {
-          required: true
-        },
-        nganh_id: {
-          required: true
-        },
       },
       messages: {
         mathuthu: {
@@ -177,12 +171,6 @@ Thêm mới Thủ Thư
           required: "Vui lòng nhập địa chỉ quê quán",
           minlength: "Địa chỉ quê quán phải có ít nhất 6 ký tự",
           maxlength: "Địa chỉ quê quán không được vượt quá 200 ký tự"
-        },
-        khoa_id:{
-          required: "Vui lòng chọn khoa"
-        },
-        nganh_id:{
-          required: "Vui lòng chọn ngành"
         },
       },
       errorElement: "em",

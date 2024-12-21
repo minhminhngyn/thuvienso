@@ -86,8 +86,6 @@ class ThuthuController extends Controller
         $listNganh = Qltv_Nganh::all();
         $listKhoa = Qltv_Khoa::all();
         return view('backend.thuthu.edit')
-            ->with('listKhoa', $listKhoa)
-            ->with('listNganh',$listNganh)
             ->with('thuthu', $thuthu);
     }
 

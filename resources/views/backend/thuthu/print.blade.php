@@ -51,8 +51,6 @@ A4
                 <th>Điện thoại</th>
                 <th>Email</th>
                 <th>Quê Quán</th>
-                <th>Khoa</th>
-                <th>Ngành</th>
             </tr>
             @foreach($listThuthu as $thuthu)
             <tr>
@@ -64,8 +62,6 @@ A4
                 <td>{{$thuthu->sdt}}</td>
                 <td>{{$thuthu->email}}</td>
                 <td>{{$thuthu->quequan}}</td>
-                <td>{{$thuthu->khoa->tenkhoa}}</td>
-                <td>{{$thuthu->nganh->tennganh}}</td>
             </tr>
             @endforeach
         </table>

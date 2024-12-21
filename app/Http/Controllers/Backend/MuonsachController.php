@@ -28,7 +28,7 @@ class MuonsachController extends Controller
         $sql = <<<EOT
         SELECT ms.id, ms.mamuon, ms.ngaymuon, ms.hantra, ms.soluong, ms.ngaytra, ms.tinhtrang, 
             dg.tendocgia, dg.chucvu, dg.gioitinh, dg.namsinh, dg.diachi, dg.sdt, dg.email, dg.quequan,
-            tt.tenthuthu, tt.mathuthu, tt.chucvu, tt.gioitinh, tt.namsinh, tt.diachi, tt.sdt, tt.email, tt.quequan,
+            tt.tenthuthu, tt.mathuthu, tt.gioitinh, tt.namsinh, tt.diachi, tt.sdt, tt.email, tt.quequan,
             s.tensach, s.tentacgia, tl.tentheloai, xb.tennxb
         FROM qltv_muonsach ms
         JOIN qltv_docgia dg ON dg.id = ms.docgia_id

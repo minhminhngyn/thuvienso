@@ -50,7 +50,6 @@ A4
                 <th>Địa Chỉ</th>
                 <th>Phone</th>
                 <th>Email</th>
-                <th>Quê Quán</th>
                 <th>Khoa</th>
                 <th>Ngành</th>
             </tr>
@@ -64,7 +63,6 @@ A4
                 <td>{{$docgia->diachi}}</td>
                 <td>{{$docgia->sdt}}</td>
                 <td>{{$docgia->email}}</td>
-                <td>{{$docgia->quequan}}</td>
                 <td>{{$docgia->khoa->tenkhoa}}</td>
                 <td>{{$docgia->nganh->tennganh}}</td>
             </tr>
