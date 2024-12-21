@@ -18,7 +18,7 @@ Danh Sách Mượn Sách
             <th>Thông Tin đọc giả</th>
             <th>Thông Tin thủ thư</th>
             <th>Ngày Mượn</th>
-            <th>Ngày dự định trả</th>
+            <th>Ngày trả</th>
             <th>Thông tin tóm tắt sách</th>
             <th>Tình trạng</th>
             <th colspan="2">Chức năng</th>

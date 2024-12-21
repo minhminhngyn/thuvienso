@@ -26,70 +26,55 @@ Chỉnh Sửa Mượn Sách
   <div class="row">
     <div class="col-md-6">
       <div class="form-group">
-        <label for="docgia_id">Đọc Giả</label>
-        <select id="docgia_id" name="docgia_id" class="form-control">
-          @foreach($listDocgia as $docgia)
-          @if(old('docgia_id') == $docgia->id)
-          <option value="{{ $docgia->id }}" selected>{{ $docgia->tendocgia }}</option>
-          @else
-          <option value="{{ $docgia->id }}">{{ $docgia->tendocgia }}</option>
-          @endif
-          @endforeach
-        </select>
+        <label for="docgia_id">Độc Giả</label>
+        <!-- Hiển thị tên độc giả, nhưng gửi ID của độc giả -->
+        <input type="text" class="form-control" id="docgia_id_display" value="{{ $muonsach->docgia->tendocgia }}" readonly>
+        <!-- Gửi ID của độc giả ẩn -->
+        <input type="hidden" name="docgia_id" value="{{ $muonsach->docgia->id }}">
       </div>
     </div>
     <div class="col-md-6">
       <div class="form-group">
         <label for="thuthu_id">Nhân viên</label>
-        <select id="thuthu_id" name="thuthu_id" class="form-control">
-          @foreach($listThuthu as $thuthu)
-          @if(old('thuthu_id') == $thuthu->id)
-          <option value="{{ $thuthu->id }}" selected>{{ $thuthu->tenthuthu }}</option>
-          @else
-          <option value="{{ $thuthu->id }}">{{ $thuthu->tenthuthu }}</option>
-          @endif
-          @endforeach
-        </select>
+        <!-- Hiển thị tên nhân viên, nhưng gửi ID của nhân viên -->
+        <input type="text" class="form-control" id="thuthu_id_display" value="{{ $muonsach->thuthu->tenthuthu }}" readonly>
+        <!-- Gửi ID của nhân viên ẩn -->
+        <input type="hidden" name="thuthu_id" value="{{ $muonsach->thuthu->id }}">
       </div>
     </div>
     <div class="col-md-12">
       <div class="form-group">
         <label for="sach_id">Sách Mượn</label>
-        <select id="sach_id" name="sach_id" class="form-control">
-          @foreach($listSach as $sach)
-          @if(old('sach_id') == $sach->id)
-          <option value="{{ $sach->id }}" selected>{{ $sach->tensach }}</option>
-          @else
-          <option value="{{ $sach->id }}">{{ $sach->tensach }}</option>
-          @endif
-          @endforeach
-        </select>
+        <!-- Hiển thị tên sách, nhưng gửi ID của sách -->
+        <input type="text" class="form-control" id="sach_id_display" value="{{ $muonsach->sach->tensach }}" readonly>
+        <!-- Gửi ID của sách ẩn -->
+        <input type="hidden" name="sach_id" value="{{ $muonsach->sach->id }}">
       </div>
     </div>
     <div class="col-md-6">
       <div class="form-group">
         <label for="mamuon">Mã Mượn</label>
-        <input type="text" class="form-control" id="mamuon" name="mamuon" aria-describedby="mamuonHelp" placeholder="Nhập mã mượn . . . " value="{{ old('mamuon', $muonsach->mamuon) }}">
+        <input type="text" class="form-control" id="mamuon" name="mamuon" aria-describedby="mamuonHelp" placeholder="Nhập mã mượn . . . " value="{{ old('mamuon', $muonsach->mamuon) }}" readonly>
       </div>
     </div>
     <div class="col-md-6">
       <div class="form-group">
         <label for="ngaymuon">Ngày Mượn</label>
-        <input type="text" class="form-control" id="ngaymuon" name="ngaymuon" aria-describedby="ngaymuonHelp" placeholder="Vd: 30/11/2019 " value="{{ old('ngaymuon', $muonsach->ngaymuon) }}">
+        <input type="text" class="form-control" id="ngaymuon" name="ngaymuon" aria-describedby="ngaymuonHelp" placeholder="Vd: 30/11/2019 " value="{{ old('ngaymuon', $muonsach->ngaymuon) }}" readonly>
       </div>
     </div>   
     <div class="col-md-6">
       <div class="form-group">
         <label for="hantra">Hạn Trả</label>
-        <input type="text" class="form-control" id="hantra" name="hantra" aria-describedby="hantraHelp" placeholder="Nhập hạn trả . . . " value="{{ old('hantra', $muonsach->hantra) }}">
+        <input type="text" class="form-control" id="hantra" name="hantra" aria-describedby="hantraHelp" placeholder="Nhập hạn trả . . . " value="{{ old('hantra', $muonsach->hantra) }}" readonly>
       </div>
     </div>
     <div class="col-md-6" style="display: none;">
-    <div class="form-group">
+      <div class="form-group">
         <label for="soluong">Số Lượng</label>
         <input type="text" class="form-control" id="soluong" name="soluong" aria-describedby="soluongHelp" placeholder="Nhập số lượng . . . " value="{{ old('soluong', $muonsach->soluong) }}">
+      </div>
     </div>
-</div>
 
     <div class="col-md-6">
       <div class="form-group">
@@ -122,6 +107,8 @@ Chỉnh Sửa Mượn Sách
 @section('custom-scripts')
 <script>
   $(document).ready(function() {
+    // Xử lý validate form
+    var initialNgayTra = $('#ngaytra').val();
     $("#frmEditMuonsach").validate({
       rules: {
         mamuon: {
@@ -155,53 +142,27 @@ Chỉnh Sửa Mượn Sách
         },
       },
       messages: {
-        mamuon: {
-          required: "Vui lòng nhập mã mượn sách",
-          minlength: "Mã mượn phải có ít nhất 3 ký tự",
-          maxlength: "Mã mượn không được vượt quá 50 ký tự"
-        },
-        ngaymuon: {
-          required: "Vui lòng nhập ngày mượn sách"
-        },
-        hantra: {
-          required: "Vui lòng nhập hạn trả sách"
-        },
-        soluong: {
-          required: "Vui lòng nhập số lượng sách mượn"
-        },
         ngaytra: {
           required: "Vui lòng nhập ngày trả sách"
         },
         tinhtrang: {
           required: "Vui lòng chọn tình trạng sách"
         },
-        sach_id: {
-          required: "Vui lòng chọn sách mượn"
-        },
-        thuthu_id: {
-          required: "Vui lòng chọn thủ thư cho mượn sách"
-        },
-        docgia_id: {
-          required: "Vui lòng chọn đọc giả mượn sách"
-        },
       },
       errorElement: "em",
       errorPlacement: function(error, element) {
-        // Thêm class `invalid-feedback` cho field đang có lỗi
         error.addClass("invalid-feedback");
         if (element.prop("type") === "checkbox") {
           error.insertAfter(element.parent("label"));
         } else {
           error.insertAfter(element);
         }
-        // Thêm icon "Kiểm tra không Hợp lệ"
         if (!element.next("span")[0]) {
           $("<span class='glyphicon glyphicon-remove form-control-feedback'></span>")
             .insertAfter(element);
         }
       },
       success: function(label, element) {
-        // Thêm icon "Kiểm tra Hợp lệ"
         if (!$(element).next("span")[0]) {
           $("<span class='glyphicon glyphicon-ok form-control-feedback'></span>")
             .insertAfter($(element));
@@ -214,9 +175,18 @@ Chỉnh Sửa Mượn Sách
         $(element).addClass("is-valid").removeClass("is-invalid");
       }
     });
+
+    // Cập nhật trường 'Ngày trả' khi thay đổi 'Tình trạng'
+    $('#tinhtrang').on('change', function() {
+      var tinhtrangValue = $(this).val(); 
+      if (tinhtrangValue == 1 || tinhtrangValue == 2) { 
+        var today = new Date();
+        var ngayHienTai = today.toISOString().split('T')[0]; 
+        $('#ngaytra').val(ngayHienTai); 
+      } else {
+        $('#ngaytra').val(initialNgayTra); 
+      }
+    });
   });
-  
 </script>
-
-
 @endsection
