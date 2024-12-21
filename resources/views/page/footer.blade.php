@@ -20,7 +20,7 @@
 			<span>Email: </span>infohn@utt.edu.vn</a>
 			<br>
 			<br>
-			<span>Hotline: </span> 0243.552.6714</a>
+			<span>Hotline: </span> 0243.3323.6714</a>
 			<br>
 			<br>
 			<span>Fax: </span> 0243.552.6713</a>

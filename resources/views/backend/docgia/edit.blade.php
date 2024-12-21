@@ -69,12 +69,6 @@ Sửa Thông Tin Đọc Giả
     
   </div>
   <div class="form-group">
-    <label for="anh">Ảnh Sách</label>
-    <img src="{{ asset('storage/uploads/'. $docgia->anh) }}" width="80px" height="80px"/>
-    <input type="file" class="form-control" id="anh" name="anh" aria-describedby="anhHelp">
-  
-  </div>
-  <div class="form-group">
     <label for="khoa_id">Khoa</label>
     <select id="khoa_id" name="khoa_id" class="form-control">
       @foreach($listKhoa as $khoa)
@@ -149,9 +143,6 @@ Sửa Thông Tin Đọc Giả
           minlength: 6,
           maxlength: 200
         },
-        anh: {
-          required: true
-        },
         khoa_id: {
           required: true
         },
@@ -204,9 +195,6 @@ Sửa Thông Tin Đọc Giả
           required: "Vui lòng nhập địa chỉ quê quán",
           minlength: "Địa chỉ quê quán phải có ít nhất 6 ký tự",
           maxlength: "Địa chỉ quê quán không được vượt quá 200 ký tự"
-        },
-        anh: {
-          required: "Vui lòng chọn ảnh đại diện cho đọc giả"
         },
         khoa_id:{
           required: "Vui lòng chọn khoa"

@@ -84,12 +84,13 @@ Chỉnh Sửa Mượn Sách
         <input type="text" class="form-control" id="hantra" name="hantra" aria-describedby="hantraHelp" placeholder="Nhập hạn trả . . . " value="{{ old('hantra', $muonsach->hantra) }}">
       </div>
     </div>
-    <div class="col-md-6">
-      <div class="form-group">
+    <div class="col-md-6" style="display: none;">
+    <div class="form-group">
         <label for="soluong">Số Lượng</label>
         <input type="text" class="form-control" id="soluong" name="soluong" aria-describedby="soluongHelp" placeholder="Nhập số lượng . . . " value="{{ old('soluong', $muonsach->soluong) }}">
-      </div>
     </div>
+</div>
+
     <div class="col-md-6">
       <div class="form-group">
         <label for="ngaytra">Ngày Trả</label>

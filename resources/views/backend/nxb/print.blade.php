@@ -20,7 +20,7 @@ A4
                 <td style="text-align: left;vertical-align: middle;">
                     <span style="font-weight: bold;font-size: 1.2em;">ĐẠI HỌC CÔNG NGHỆ GIAO THÔNG VẬN TẢI</span> </br>
                     <span style="font-size: 0.9em;"><b>Địa Chỉ</b>:  54 Triều Khúc, Thanh Xuân Nam,Thanh Xuân, Hà Nội</span> </br>
-                    <span style="font-size: 0.9em;"><b>Hotline</b>:  0243.552.6713 - 0243.552.6714</span> </br>
+                    <span style="font-size: 0.9em;"><b>Hotline</b>:  0243.552.6713 - 0243.3323.6714</span> </br>
                     <span style="font-size: 0.9em;"><b>Email</b>:    infohn@utt.edu.vn</span> </br>
                     <span style="font-size: 0.9em;">-----------------------------</span> </br>
                 </td>

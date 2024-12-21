@@ -59,12 +59,12 @@
                         <input type="email" id="email" placeholder="Email" class="form-control" name="email" autofocus required="">
                     </div>
                 </div>
-                <div class="form-group">
-                    <label for="email" class="col-sm-3 control-label">Role:</label>
-                    <div class="col-sm-9">
-                        <input type="number" id="quyen_tk" placeholder="Quyen Tk" class="form-control" name="quyen_tk" value="1" autofocus required="">
-                    </div>
-                </div>
+				<div style="display: none;">
+    <div>
+        <input type="number" id="quyen_tk" placeholder="Quyen Tk" name="quyen_tk" value="1" autofocus required="">
+    </div>
+</div>
+
                 <button type="submit" class="btn btn-primary btn-block" name="cmd">Register</button>
             </form> <!-- /form -->
     </div> <!-- ./container -->

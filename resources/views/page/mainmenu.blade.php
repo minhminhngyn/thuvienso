@@ -14,7 +14,7 @@
 	</div>
 			</div>
 			<div style="float:right;height: 32px;position: absolute;right: 1px;top: 5px;">
-				<span><img src="{{ asset('image/').'/'.'552489.png' }}" style="width: 25px;height: 20px;padding-right: 5px;"></span><b>Hotline:<span style="font-weight: bold;color:#00cc66;">0243.552.6714</span></b>
+				<span><img src="{{ asset('image/').'/'.'552489.png' }}" style="width: 25px;height: 20px;padding-right: 5px;"></span><b>Hotline:<span style="font-weight: bold;color:#00cc66;">0243.3323.6714</span></b>
 			</div>
 			</div>
 		</div>

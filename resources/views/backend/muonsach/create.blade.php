@@ -62,7 +62,7 @@ Thêm Mới Mượn Sách
           <tr>
             <th style="width: 40%;">Sách Mượn</th>
             <th style="width: 20%;">Mã Mượn</th>
-            <th style="width: 20%;">Số Lượng</th>
+           
             <th style="width: 20%;">Hạn Trả</th>
           </tr>
         </thead>
@@ -78,9 +78,11 @@ Thêm Mới Mượn Sách
             <td>
               <input type="text" class="form-control" name="mamuon" id="mamuon" />
             </td>
-            <td>
-              <input type="text" class="form-control" name="soluong" id="soluong" />
-            </td>
+            <td style="display: none;">
+    <input type="text" class="form-control" name="soluong" id="soluong" value="1" />
+</td>
+
+
             <td>
               <input type="text" class="form-control" name="hantra" id="hantra" />
             </td>

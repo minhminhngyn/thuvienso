@@ -33,7 +33,7 @@ Danh Sách Sách
             </td>
             <td>{{$sach->theloai->tentheloai}}</td>
             <td>{{$sach->nxb->tennxb}}</td>
-            <td>{{$sach->soluong}} Cuốn</td>
+            <td> Tổng {{$sach->soluong}} Cuốn</td>
             @if($sach->trangthaisach == 1)
                 <td>Còn Sách</td>
             @else

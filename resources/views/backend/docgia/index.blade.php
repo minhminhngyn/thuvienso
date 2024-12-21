@@ -14,7 +14,6 @@ Danh Sách Đọc giả
             <th colspan="2">Chức Năng</th>
             <th>Mã Đọc giả</th>
             <th>Tên Đọc giả</th>
-            <th>Ảnh</th>
             <th>Khoa</th>
             <th>Ngành</th>   
             <th>Chức Vụ</th>
@@ -46,9 +45,6 @@ Danh Sách Đọc giả
             </td>
             <td>{{$docgia->madocgia}}</td>
             <td>{{$docgia->tendocgia}}</td>
-            <td>
-                <img src="{{ asset('storage/uploads/'. $docgia->anh) }}" width="80px" height="80px"/>
-            </td>
             <td>{{$docgia->khoa->tenkhoa}}</td>
             <td>{{$docgia->nganh->tennganh}}</td>
             <td>{{$docgia->chucvu}}</td>
