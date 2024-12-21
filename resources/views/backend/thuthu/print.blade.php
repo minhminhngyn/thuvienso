@@ -49,7 +49,7 @@ A4
                 <th>Giới Tính</th>
                 <th>Năm Sinh</th>
                 <th>Địa Chỉ</th>
-                <th>Phone</th>
+                <th>Điện thoại</th>
                 <th>Email</th>
                 <th>Quê Quán</th>
                 <th>Khoa</th>

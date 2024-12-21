@@ -14,14 +14,13 @@ Danh Sách Thủ Thư
             <th colspan="2">Chức Năng</th>
             <th>Mã Thủ Thư</th>
             <th>Tên Thủ Thư</th>
-            <th>Ảnh</th>
             <th>Khoa</th>
             <th>Ngành</th>   
             <th>Chức Vụ</th>
             <th>Giới Tính</th>
             <th>Năm Sinh</th>
             <th>Địa Chỉ</th>
-            <th>Phone</th>
+            <th>Điện thoại</th>
             <th>Email</th>
             <th>Quê Quán</th>
         </tr>
@@ -46,9 +45,6 @@ Danh Sách Thủ Thư
             </td>
             <td>{{$thuthu->mathuthu}}</td>
             <td>{{$thuthu->tenthuthu}}</td>
-            <td>
-                <img src="{{ asset('storage/uploads/'. $thuthu->anh) }}" width="80px" height="80px"/>
-            </td>
             <td>{{$thuthu->khoa->tenkhoa}}</td>
             <td>{{$thuthu->nganh->tennganh}}</td>
             <td>{{$thuthu->chucvu}}</td>

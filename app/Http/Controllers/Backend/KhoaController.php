@@ -17,8 +17,8 @@ class KhoaController extends Controller
      */
     public function index()
     {
-        $list = Qltv_Khoa::paginate(10);
-        $users= DB::table('qltv_khoa')->paginate(10); // Hiển thị Phân Trang
+        $list = Qltv_Khoa::paginate(5);
+        $users= DB::table('qltv_khoa')->paginate(5); // Hiển thị Phân Trang
         return view('backend.khoa.index',['users' => $users])
             ->with('listKhoa', $list);
     }

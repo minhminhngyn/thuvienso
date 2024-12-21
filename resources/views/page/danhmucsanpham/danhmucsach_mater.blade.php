@@ -9,9 +9,9 @@
     z-index: 10;
     background: white;
     box-sizing: border-box;
-    border-left: 2px solid lavender;
-    border-bottom: 2px solid lavender;
-    border-right: 2px solid lavender;
+    border-left: 2px solidrgb(45, 60, 76); /* Xanh lam tối */
+    border-bottom: 2px solidrgb(45, 60, 76);
+    border-right: 2px solidrgb(45, 60, 76);
 }
 
 #mainmenu #menucontact div:hover #ulmenu {
@@ -46,13 +46,12 @@
     width: 130px;
     height: 48px;
     overflow: hidden;
-    /*white-space: normal;
-			text-overflow: ellipsis:;*/
     text-transform: capitalize;
+    color: #000000; /* Màu đen */
 }
 
 .product .prices {
-    color: #444444;
+    color: #000000; /* Màu đen */
     font-weight: bold;
     font-size: 14px;
 }
@@ -74,28 +73,27 @@
 }
 
 .product .product_name:hover {
-    color: #00cc66;
+    color:rgb(45, 60, 76); /* Màu xanh lam tối */
     cursor: pointer;
 }
 
-.product .product_ composer:hover {
-    color: #00cc66;
+.product .product_composer:hover {
+    color:rgb(45, 60, 76); /* Màu xanh lam tối */
     cursor: pointer;
 }
 
 .product .category {
     width: 100%;
     font-weight: bold;
-    color: #444;
+    color:rgb(45, 60, 76); /* Màu xanh lam tối */
     text-transform: capitalize;
     font-size: 14px;
     text-align: center;
     margin-top: 15px;
-
 }
 
 .product .category:hover {
-    color: #00cc66;
+    color:rgb(45, 60, 76); /* Màu xanh lá */
     cursor: pointer;
 }
 
@@ -107,14 +105,35 @@ input[type=radio] {
 }
 
 input[type=radio]:checked {
-    /*background: url(data:image/gif;base64,R0lGODlhAQABAPAAAP///////yH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==) no-repeat center center;*/
-    background: #00cc66;
+    background: #003366; /* Màu xanh lam tối */
     background-size: 9px 9px;
 }
 
 input[type=radio]:focus {
     outline-color: transparent;
 }
+
+/* Thêm hiệu ứng hover cho các phần tử khác */
+a:hover {
+    color: #003366; /* Xanh lam tối */
+}
+
+h1, h2 {
+    color: #003366; /* Xanh lam tối */
+}
+
+ul {
+    list-style-type: none;
+}
+
+ul li a {
+    color: #000000; /* Màu đen */
+}
+
+ul li a:hover {
+    color: #003366; /* Xanh lam tối */
+}
+
 </style>
 @endsection
 @section('header')

@@ -37,12 +37,12 @@ class LoginController extends Controller
             }
 
             else{
-                Session::flash('message', "Vui lòng kiểm tra lại tài khoản mật khẩu!");
+                Session::flash('message', "Vui lòng kiểm tra lại mật khẩu tài khoản!");
                 return Redirect::back();   
             }
         }
         else{
-             Session::flash('message', "Vui lòng kiểm tra lại tài khoản mật khẩu!");
+             Session::flash('message', "Vui lòng kiểm tra lại mật khẩu tài khoản!");
                 return Redirect::back(); 
         }
     

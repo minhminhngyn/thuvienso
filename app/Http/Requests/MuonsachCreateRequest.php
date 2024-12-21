@@ -34,11 +34,6 @@ class MuonsachCreateRequest extends FormRequest
     }
     public function messages() {
         return [
-            'mamuon.required'      => 'Vui lòng nhập mã mượn',
-            'mamuon.min'           => 'Vui lòng nhập mã mượn ít nhất 3 ký tự',
-            'mamuon.max'           => 'Vui lòng nhập mã mượn tối đa 50 ký tự',
-            'mamuon.unique'        => 'Mã mượn này đã tồn tại. Vui lòng nhập mã khác',
-
             'hantra.required'      => 'Vui lòng nhập hạn trả sách',
             'soluong.required'     => 'Vui lòng nhập số lượng sách mượn',
             'thuthu_id.required'   => 'Vui lòng chọn thủ thư cho mượn sách',

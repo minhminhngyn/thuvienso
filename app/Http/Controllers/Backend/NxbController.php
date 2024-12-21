@@ -17,8 +17,8 @@ class NxbController extends Controller
      */
     public function index()
     {
-        $list = Qltv_Nxb::paginate(10);
-        $users= DB::table('qltv_nxb')->paginate(10); // Hiển thị Phân Trang
+        $list = Qltv_Nxb::paginate(5);
+        $users= DB::table('qltv_nxb')->paginate(5); // Hiển thị Phân Trang
         return view('backend.nxb.index',['users' => $users])
             ->with('listNxb', $list);
     }

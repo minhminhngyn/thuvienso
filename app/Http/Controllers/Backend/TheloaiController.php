@@ -18,8 +18,8 @@ class TheloaiController extends Controller
      */
     public function index()
     {
-        $list = Qltv_Theloai::paginate(10);
-        $users= DB::table('qltv_theloai')->paginate(10); // Hiển thị Phân Trang
+        $list = Qltv_Theloai::paginate(5);
+        $users= DB::table('qltv_theloai')->paginate(5); // Hiển thị Phân Trang
         return view('backend.theloai.index',['users' => $users])
             ->with('listTheloai', $list);
     }

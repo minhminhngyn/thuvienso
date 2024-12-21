@@ -18,8 +18,8 @@ class NganhController extends Controller
      */
     public function index()
     {
-        $list = Qltv_Nganh::paginate(10);
-        $users= DB::table('qltv_nganh')->paginate(10); // Hiển thị Phân Trang
+        $list = Qltv_Nganh::paginate(5);
+        $users= DB::table('qltv_nganh')->paginate(5); // Hiển thị Phân Trang
         return view('backend.nganh.index',['users' => $users])
             ->with('listNganh', $list);
     }

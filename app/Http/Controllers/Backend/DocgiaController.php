@@ -22,8 +22,8 @@ class DocgiaController extends Controller
      */
     public function index()
     {
-        $list = Qltv_Docgia::paginate(10);
-        $users= DB::table('qltv_docgia')->paginate(10); // Hiển thị Phân Trang
+        $list = Qltv_Docgia::paginate(5);
+        $users= DB::table('qltv_docgia')->paginate(5); // Hiển thị Phân Trang
         return view('backend.docgia.index',['users' => $users])
             ->with('listDocgia', $list);
     }

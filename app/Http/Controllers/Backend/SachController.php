@@ -20,8 +20,8 @@ class SachController extends Controller
      */
     public function index()
     {
-        $list = Qltv_Sach::paginate(10); // Phân trang cho dữ liệu
-        $users= DB::table('qltv_sach')->paginate(10); // Hiển thị Phân Trang
+        $list = Qltv_Sach::paginate(5); // Phân trang cho dữ liệu
+        $users= DB::table('qltv_sach')->paginate(5); // Hiển thị Phân Trang
         return view('backend.sach.index',['users' => $users])
             ->with('listSach', $list);
     }

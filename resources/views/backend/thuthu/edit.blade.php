@@ -54,7 +54,7 @@ Sửa Thông Tin Thủ Thư
     
   </div>
   <div class="form-group">
-    <label for="sdt">Phone</label>
+    <label for="sdt">Điện thoại</label>
     <input type="text" class="form-control" id="sdt" name="sdt" aria-describedby="sdtHelp" placeholder="Nhập số điện thoại . . ." value="{{ old('sdt', $thuthu->sdt) }}">
     
   </div>
@@ -67,12 +67,6 @@ Sửa Thông Tin Thủ Thư
     <label for="quequan">Quê Quán</label>
     <input type="text" class="form-control" id="quequan" name="quequan" aria-describedby="quequanHelp" placeholder="Nhập quê quán . . ." value="{{ old('quequan', $thuthu->quequan) }}">
     
-  </div>
-  <div class="form-group">
-    <label for="anh">Ảnh Thủ thư</label>
-    <img src="{{ asset('storage/uploads/'. $thuthu->anh) }}" width="80px" height="80px"/>
-    <input type="file" class="form-control" id="anh" name="anh" aria-describedby="anhHelp">
-  
   </div>
   <div class="form-group">
     <label for="khoa_id">Khoa</label>
@@ -149,9 +143,6 @@ Sửa Thông Tin Thủ Thư
           minlength: 6,
           maxlength: 200
         },
-        anh: {
-          required: true
-        },
         khoa_id: {
           required: true
         },
@@ -204,9 +195,6 @@ Sửa Thông Tin Thủ Thư
           required: "Vui lòng nhập địa chỉ quê quán",
           minlength: "Địa chỉ quê quán phải có ít nhất 6 ký tự",
           maxlength: "Địa chỉ quê quán không được vượt quá 200 ký tự"
-        },
-        anh: {
-          required: "Vui lòng chọn ảnh đại diện cho thủ thư"
         },
         khoa_id:{
           required: "Vui lòng chọn khoa"
