@@ -44,8 +44,7 @@ EOT; //chuỗi có xuống dòng
         // Raw SQL
 
         $list = DB::select($sql); // Phân trang cho dữ liệu
-        $list = Qltv_Muonsach::paginate(5);
-        $users= DB::table('qltv_muonsach')->paginate(5); // Hiển thị Phân Trang
+        //$users= DB::table('qltv_muonsach'); // Hiển thị Phân Trang
         return view('backend.muonsach.index')
             ->with('listMuonsach', $list);
     }
@@ -78,8 +77,8 @@ EOT; //chuỗi có xuống dòng
         $muonsach->mamuon      = $request->mamuon;
         $muonsach->soluong = $request->soluong; // 2 | 20
         $muonsach->hantra = $request->hantra;
-        $muonsach->ngaymuon = $dt->toDateTimeString();
-        $muonsach->ngaytra = $dt->addDays($request->hantra);// lấy ngày mượn hiện tại cộng với hạn trả ra ngày trả
+        $muonsach->ngaymuon = $dt->format('Y/m/d');
+        $muonsach->ngaytra = $dt->copy()->addDays(10)->format('Y/m/d');
         //$muonsach->ngaytra = Carbon::now();
         $muonsach->tinhtrang    = '0';
         $muonsach->thuthu_id    = $request->thuthu_id;
