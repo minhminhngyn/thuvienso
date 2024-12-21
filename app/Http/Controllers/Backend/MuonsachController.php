@@ -40,15 +40,27 @@ class MuonsachController extends Controller
             dg.tendocgia, dg.chucvu, dg.gioitinh, dg.namsinh, dg.diachi, dg.sdt, dg.email, dg.quequan,
             tt.tenthuthu, tt.mathuthu, tt.chucvu, tt.gioitinh, tt.namsinh, tt.diachi, tt.sdt, tt.email, tt.quequan,
             s.tensach, s.tentacgia, tl.tentheloai, xb.tennxb
-EOT; //chuỗi có xuống dòng
-        // Raw SQL
-
-        $list = DB::select($sql); // Phân trang cho dữ liệu
-        $list = Qltv_Muonsach::paginate(5);
-        $users= DB::table('qltv_muonsach')->paginate(5); // Hiển thị Phân Trang
+        EOT;
+    
+        // Thực thi câu lệnh SQL và lấy dữ liệu
+        $list = DB::select($sql);
+    
+        // Sử dụng LengthAwarePaginator để phân trang dữ liệu
+        $currentPage = LengthAwarePaginator::resolveCurrentPage();
+        $perPage = 5;
+        $currentPageItems = array_slice($list, ($currentPage - 1) * $perPage, $perPage);
+        $paginator = new LengthAwarePaginator(
+            $currentPageItems, 
+            count($list), 
+            $perPage, 
+            $currentPage,
+            ['path' => Paginator::resolveCurrentPath()]
+        );
+    
         return view('backend.muonsach.index')
-            ->with('listMuonsach', $list);
+            ->with('listMuonsach', $paginator);
     }
+    
     /**
      * Show the form for creating a new resource.
      *

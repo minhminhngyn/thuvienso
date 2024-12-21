@@ -19,7 +19,7 @@ body {
 			right: 185px;
 			width: 100px;
 			height: 30px;
-			background: white;
+			background: rgb(255, 255, 255);
 			text-align: center;
 			visibility: hidden;
 		}

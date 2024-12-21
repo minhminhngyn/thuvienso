@@ -33,7 +33,6 @@ class ThuthuCreateRequest extends FormRequest
             'sdt'                     => 'required|min:9|max:25',
             'email'                   => 'required|min:6|max:200',
             'quequan'                 => 'required|min:6|max:200',
-            'anh'                     => 'required',
             'khoa_id'                 => 'required',
             'nganh_id'                => 'required',
         ];
@@ -76,8 +75,6 @@ class ThuthuCreateRequest extends FormRequest
             'quequan.required'    => 'Vui lòng nhập địa chỉ quê quán',
             'quequan.min'         => 'Vui lòng nhập địa chỉ quê quán ít nhất 6 ký tự',
             'quequan.max'         => 'Vui lòng nhập địa chỉ quê quán tối đa 200 ký tự',
-
-            'anh.required'          => 'Vui lòng chọn ảnh cho thủ thư',
 
             'khoa_id.required'   => 'Vui lòng chọn khoa',
 

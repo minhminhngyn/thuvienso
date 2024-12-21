@@ -25,7 +25,6 @@ class MuonsachCreateRequest extends FormRequest
     {
         return [
             'mamuon'                => 'required|min:3|max:50|unique:qltv_muonsach', //tên table qtlv_muonsach
-            'hantra'                => 'required',
             'soluong'               => 'required',
             'thuthu_id'             => 'required',
             'docgia_id'             => 'required',
@@ -34,7 +33,6 @@ class MuonsachCreateRequest extends FormRequest
     }
     public function messages() {
         return [
-            'hantra.required'      => 'Vui lòng nhập hạn trả sách',
             'soluong.required'     => 'Vui lòng nhập số lượng sách mượn',
             'thuthu_id.required'   => 'Vui lòng chọn thủ thư cho mượn sách',
             'docgia_id.required'   => 'Vui lòng chọn đọc giả mượn sách',

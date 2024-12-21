@@ -8,7 +8,7 @@ class Qltv_Thuthu extends Model
 {
     public $timestamps = false; //Dùng để bỏ Updated_at và created_at nếu không có khi chạy sẽ bị lỗi 
     protected $table        = 'qltv_thuthu';
-    protected $fillable     = ['mathuthu', 'tenthuthu', 'chucvu', 'gioitinh', 'namsinh', 'diachi', 'sdt', 'email', 'quequan', 'anh','khoa_id', 'nganh_id'];
+    protected $fillable     = ['mathuthu', 'tenthuthu', 'chucvu', 'gioitinh', 'namsinh', 'diachi', 'sdt', 'email', 'quequan','khoa_id', 'nganh_id'];
     protected $guarded      = ['id'];
     protected $primaryKey   = 'id';
     //Tạo quan hệ vs nganh và khoa

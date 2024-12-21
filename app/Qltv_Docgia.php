@@ -8,7 +8,7 @@ class Qltv_Docgia extends Model
 {
     public $timestamps = false;
     protected $table        = 'qltv_docgia';
-    protected $fillable     = ['madocgia', 'tendocgia', 'chucvu', 'gioitinh', 'namsinh', 'diachi', 'sdt', 'email', 'quequan', 'anh','khoa_id', 'nganh_id'];
+    protected $fillable     = ['madocgia', 'tendocgia', 'chucvu', 'gioitinh', 'namsinh', 'diachi', 'sdt', 'email', 'quequan','khoa_id', 'nganh_id'];
     protected $guarded      = ['id'];
     protected $primaryKey   = 'id';
     //Tạo quan hệ vs nganh và khoa

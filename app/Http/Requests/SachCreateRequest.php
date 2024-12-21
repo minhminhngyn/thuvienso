@@ -30,7 +30,6 @@ class SachCreateRequest extends FormRequest
             'tensach'               => 'required|min:3|max:500',
             'tentacgia'             => 'required|min:3|max:200',
             'soluong'               => 'required',
-            'anh'                   => 'required',
             'theloai_id'            => 'required',
             'nxb_id'                => 'required',
 
@@ -52,8 +51,6 @@ class SachCreateRequest extends FormRequest
             'tentacgia.max'         => 'Vui lòng nhập tên tác giả tối đa 500 ký tự',
 
             'soluong.required'      => 'Vui lòng nhập số lượng của sách',
-
-            'anh.required'          => 'Vui lòng chọn ảnh cho sách',
 
             'theloai_id.required'   => 'Vui lòng chọn thể loại',
 
