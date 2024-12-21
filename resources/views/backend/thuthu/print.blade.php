@@ -45,7 +45,6 @@ A4
             <tr>
                 <th>Mã Thủ thư</th>
                 <th>Tên Thủ thư</th>
-                <th>Chức Vụ</th>
                 <th>Giới Tính</th>
                 <th>Năm Sinh</th>
                 <th>Địa Chỉ</th>
@@ -59,7 +58,6 @@ A4
             <tr>
                 <td>{{$thuthu->mathuthu}}</td>
                 <td>{{$thuthu->tenthuthu}}</td>
-                <td>{{$thuthu->chucvu}}</td>
                 <td>{{$thuthu->gioitinh}}</td>
                 <td>{{$thuthu->namsinh}}</td>
                 <td>{{$thuthu->diachi}}</td>

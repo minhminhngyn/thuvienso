@@ -1,7 +1,7 @@
 @section('header')
 	<div id="header">
 		<form action="{{ route('timkiem_key') }}" method="get">
-		<div id="top" style="width: 1140px;margin: auto;height: 55px;">
+		<div id="top" style="width: 1140px;margin: auto;height: 65px;">
 			<div id="logo" style="width: 342px;height: 55px;"><a href="{{ url('/') }}"><span style="font-weight: bold;font-size: 300%;line-height: 30px;"><img src="{{ asset('image').'/'.'logo-utt-border.png' }}" alt="" style="padding-left: 30px;width: 170px;height: 55px;"></span></a></div>
 			<div style="width: 440px;height: 30px;margin-top:13px;position: relative;bottom: 57px;left: 342px;">
 				<input type="text" name="key" style="width: 394px;height: 30px;" id="searching">

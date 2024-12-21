@@ -28,6 +28,7 @@ Danh Sách Mượn Sách
         @foreach($listMuonsach as $muonsach)
         <tr>
             <td>{{ $muonsach->mamuon }}</td>
+            
             <td>
                 Họ tên: <b>{{ $muonsach->tendocgia }}</b><br />
                 Chức vụ: {{ $muonsach->chucvu }}<br /> 

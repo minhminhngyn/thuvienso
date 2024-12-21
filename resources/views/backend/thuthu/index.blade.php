@@ -16,7 +16,6 @@ Danh Sách Thủ Thư
             <th>Tên Thủ Thư</th>
             <th>Khoa</th>
             <th>Ngành</th>   
-            <th>Chức Vụ</th>
             <th>Giới Tính</th>
             <th>Năm Sinh</th>
             <th>Địa Chỉ</th>
@@ -47,7 +46,6 @@ Danh Sách Thủ Thư
             <td>{{$thuthu->tenthuthu}}</td>
             <td>{{$thuthu->khoa->tenkhoa}}</td>
             <td>{{$thuthu->nganh->tennganh}}</td>
-            <td>{{$thuthu->chucvu}}</td>
             <td>{{$thuthu->gioitinh}}</td>
             <td>{{$thuthu->namsinh}}</td>
             <td>{{$thuthu->diachi}}</td>

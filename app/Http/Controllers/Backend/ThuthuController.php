@@ -51,7 +51,6 @@ class ThuthuController extends Controller
         $thuthu = new Qltv_Thuthu();
         $thuthu->mathuthu = $request->mathuthu;
         $thuthu->tenthuthu = $request->tenthuthu;
-        $thuthu->chucvu = $request->chucvu;
         $thuthu->gioitinh = $request->gioitinh;
         $thuthu->namsinh = $request->namsinh;
         $thuthu->diachi = $request->diachi;
@@ -59,21 +58,6 @@ class ThuthuController extends Controller
         $thuthu->email = $request->email;
         $thuthu->quequan = $request->quequan;
         //Kiểm tra ảnh có rỗng không
-        if(!empty($request->anh)){
-            $thuthu->anh = $request->anh;
-        }
-        $thuthu->khoa_id = $request->khoa_id;
-        $thuthu->nganh_id = $request->nganh_id;
-        if($request->hasFile('anh'))
-        {
-            $file = $request->anh;
-            // Lưu tên hình vào column image
-            $thuthu->anh = $file->getClientOriginalName();
-            
-            // Chép file vào thư mục "uploads"
-            $fileSaved = $file->storeAs('public/uploads', $thuthu->anh);
-        }
-
         $thuthu->save();
 
         return redirect()->to('admin/thuthu');
@@ -119,7 +103,6 @@ class ThuthuController extends Controller
         $thuthu = Qltv_Thuthu::find($id);
         $thuthu->mathuthu = $request->mathuthu;
         $thuthu->tenthuthu = $request->tenthuthu;
-        $thuthu->chucvu = $request->chucvu;
         $thuthu->gioitinh = $request->gioitinh;
         $thuthu->namsinh = $request->namsinh;
         $thuthu->diachi = $request->diachi;
@@ -127,22 +110,6 @@ class ThuthuController extends Controller
         $thuthu->email = $request->email;
         $thuthu->quequan = $request->quequan;
         //Kiểm tra ảnh có rỗng không
-        if(!empty($request->anh)){
-            $thuthu->anh = $request->anh;
-        }
-        $thuthu->khoa_id = $request->khoa_id;
-        $thuthu->nganh_id = $request->nganh_id;
-        if($request->hasFile('anh'))
-        {
-            //Xóa ảnh cũ để tránh rác
-            Storage::delete('public/uploads/' . $thuthu->anh);
-            $file = $request->anh;
-            // Lưu tên hình vào column image
-            $thuthu->anh = $file->getClientOriginalName();
-            
-            // Chép file vào thư mục "uploads"
-            $fileSaved = $file->storeAs('public/uploads', $thuthu->anh);
-        }
 
         $thuthu->save();
 

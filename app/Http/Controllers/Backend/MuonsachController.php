@@ -47,7 +47,8 @@ EOT; //chuỗi có xuống dòng
         $list = Qltv_Muonsach::paginate(5);
         $users= DB::table('qltv_muonsach')->paginate(5); // Hiển thị Phân Trang
         return view('backend.muonsach.index')
-            ->with('listMuonsach', $paginator);
+            ->with('listMuonsach', $users);
+
     }
     
     /**

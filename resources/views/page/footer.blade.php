@@ -1,29 +1,18 @@
 @section('footer')
 	<br style="clear: both;">
-	<div id="footer_left">
-			<h2>Thông tin</h2>
-			<hr>
-			<h2>Giới thiệu</h2>
-			<hr>
-			<h2>Tài khoản</h2>
-			<hr>
-			<h2>Thông báo</h2>
-			<hr>
-			<hr>
-		</div>
 		<div id="footer_center">
 			<h2>Liên hệ</h2>
 			<hr>
-			<span>Address: </span>Số 54 Triều Khúc, Thanh Xuân, Hà Nội
+			<span>Address: </span>12 Chùa Bộc, Đống Đa, Hà NộiNội
 			<br>	
 			<br>	
-			<span>Email: </span>infohn@utt.edu.vn</a>
+			<span>Email: </span> tttttv@hvnh.edu.vn</a>
 			<br>
 			<br>
-			<span>Hotline: </span> 0243.3323.6714</a>
+			<span>Hotline: </span>  (04)3.8528587</a>
 			<br>
 			<br>
-			<span>Fax: </span> 0243.552.6713</a>
+			<span>Fax: </span> (04)3.8528700</a>
 			<br>
 			<br>
 			<br>

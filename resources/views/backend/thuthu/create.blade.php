@@ -34,14 +34,16 @@ Thêm mới Thủ Thư
     
   </div>
   <div class="form-group">
-    <label for="chucvu">Chức Vụ</label>
-    <input type="text" class="form-control" id="chucvu" name="chucvu" aria-describedby="chucvuHelp" placeholder="Nhập chức vụ . . ." value="{{ old('chucvu') }}">
-    
-  </div>
-  <div class="form-group">
+    <!--<label for="gioitinh">Giới Tính</label>
+    <input type="text" class="form-control" id="gioitinh" name="gioitinh" aria-describedby="gioitinhHelp" placeholder="Nhập giới tính . . ." value="{{ old('gioitinh') }}">!-->
+    <div class="form-group">
     <label for="gioitinh">Giới Tính</label>
-    <input type="text" class="form-control" id="gioitinh" name="gioitinh" aria-describedby="gioitinhHelp" placeholder="Nhập giới tính . . ." value="{{ old('gioitinh') }}">
-    
+    <select id="gioitinh" name="gioitinh" class="form-control">
+        <option value="Nam" {{ old('gioitinh') == 'Nam' ? 'selected' : '' }}>Nam</option>
+        <option value="Nữ" {{ old('gioitinh') == 'Nữ' ? 'selected' : '' }}>Nữ</option>
+    </select>
+</div>
+
   </div>
   <div class="form-group">
     <label for="namsinh">Năm Sinh</label>
@@ -108,16 +110,6 @@ Thêm mới Thủ Thư
           minlength: 3,
           maxlength: 200
         },
-        chucvu: {
-          required: true,
-          minlength: 6,
-          maxlength: 200
-        },
-        gioitinh: {
-          required: true,
-          minlength: 2,
-          maxlength: 200
-        },
         namsinh: {
           required: true,
           minlength: 4,
@@ -160,16 +152,6 @@ Thêm mới Thủ Thư
           required: "Vui lòng nhập tên Thủ thư",
           minlength: "Tên Thủ thư phải có ít nhất 3 ký tự",
           maxlength: "Tên Thủ thư không được vượt quá 200 ký tự"
-        },
-        chucvu: {
-          required: "Vui lòng nhập chức vụ",
-          minlength: "Chức vụ phải có ít nhất 6 ký tự",
-          maxlength: "Chức vụ không được vượt quá 200 ký tự"
-        },
-        gioitinh: {
-          required: "Vui lòng nhập giới tính",
-          minlength: "Giới tính phải có ít nhất 2 ký tự",
-          maxlength: "Giới tính không được vượt quá 200 ký tự"
         },
         namsinh: {
           required: "Vui lòng nhập năm sinh",

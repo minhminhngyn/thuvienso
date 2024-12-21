@@ -34,15 +34,21 @@ Sửa Thông Tin Đọc Giả
 
   </div>
   <div class="form-group">
-    <label for="chucvu">Chức Vụ</label>
-    <input type="text" class="form-control" id="chucvu" name="chucvu" aria-describedby="chucvuHelp" placeholder="Nhập Chức vụ . . ." value="{{ old('chucvu', $docgia->chucvu) }}">
+  <label for="chucvu">Chức vụ</label>
+  <select id="chucvu" name="chucvu" class="form-control">
+    <option value="sinhvien" {{ old('chucvu') == 'sinhvien' ? 'selected' : '' }}>Sinh viên</option>
+    <option value="giangvien" {{ old('chucvu') == 'giangvien' ? 'selected' : '' }}>Giảng viên</option>
+  </select>
+</div>
 
-  </div>
-  <div class="form-group">
+<div class="form-group">
     <label for="gioitinh">Giới Tính</label>
-    <input type="text" class="form-control" id="gioitinh" name="gioitinh" aria-describedby="gioitinhHelp" placeholder="Nhập giới tính . . ." value="{{ old('gioitinh', $docgia->gioitinh) }}">
-    
-  </div>
+    <select id="gioitinh" name="gioitinh" class="form-control">
+        <option value="Nam" {{ old('gioitinh') == 'Nam' ? 'selected' : '' }}>Nam</option>
+        <option value="Nữ" {{ old('gioitinh') == 'Nữ' ? 'selected' : '' }}>Nữ</option>
+    </select>
+</div>
+
   <div class="form-group">
     <label for="namsinh">Năm Sinh</label>
     <input type="text" class="form-control" id="namsinh" name="namsinh" aria-describedby="namsinhHelp" placeholder="Nhập năm sinh . . ." value="{{ old('namsinh', $docgia->namsinh) }}">
@@ -108,16 +114,6 @@ Sửa Thông Tin Đọc Giả
           minlength: 3,
           maxlength: 200
         },
-        chucvu: {
-          required: true,
-          minlength: 6,
-          maxlength: 200
-        },
-        gioitinh: {
-          required: true,
-          minlength: 2,
-          maxlength: 200
-        },
         namsinh: {
           required: true,
           minlength: 4,
@@ -160,16 +156,6 @@ Sửa Thông Tin Đọc Giả
           required: "Vui lòng nhập tên đọc giả",
           minlength: "Tên đọc giả phải có ít nhất 3 ký tự",
           maxlength: "Tên đọc giả không được vượt quá 200 ký tự"
-        },
-        chucvu: {
-          required: "Vui lòng nhập chức vụ",
-          minlength: "Chức vụ phải có ít nhất 6 ký tự",
-          maxlength: "Chức vụ không được vượt quá 200 ký tự"
-        },
-        gioitinh: {
-          required: "Vui lòng nhập giới tính",
-          minlength: "Giới tính phải có ít nhất 2 ký tự",
-          maxlength: "Giới tính không được vượt quá 200 ký tự"
         },
         namsinh: {
           required: "Vui lòng nhập năm sinh",
