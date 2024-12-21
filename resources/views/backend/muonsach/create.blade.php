@@ -76,7 +76,7 @@ Thêm Mới Mượn Sách
               </select>
             </td>
             <td>
-              <input type="text" class="form-control" name="mamuon" id="mamuon" />
+              <input type="text" class="form-control" name="mamuon" id="mamuon" readonly/>
             </td>
             <td style="display: none;">
     <input type="text" class="form-control" name="soluong" id="soluong" value="1" />
@@ -84,7 +84,7 @@ Thêm Mới Mượn Sách
 
 
             <td>
-              <input type="text" class="form-control" name="hantra" id="hantra" />
+              <input type="text" class="form-control" name="hantra" id="hantra" readonly/>
             </td>
           </tr>
         </tbody>
@@ -99,6 +99,32 @@ Thêm Mới Mượn Sách
 @section('custom-scripts')
 <script>
   $(document).ready(function() {
+    // Tính toán ngày hạn trả mặc định
+    const today = new Date();
+    const defaultDueDate = new Date();
+    defaultDueDate.setDate(today.getDate() + 10);
+    const formattedDate = defaultDueDate.toISOString().split('T')[0]; // Định dạng yyyy-MM-dd
+    
+    // Gán giá trị mặc định cho trường hạn trả
+    $('#hantra').val(formattedDate);
+
+    // Sinh mã mượn tự động
+    function generateMamuon() {
+      const now = new Date();
+      const year = now.getFullYear();
+      const month = String(now.getMonth() + 1).padStart(2, '0');
+      const day = String(now.getDate()).padStart(2, '0');
+      const hours = String(now.getHours()).padStart(2, '0');
+      const minutes = String(now.getMinutes()).padStart(2, '0');
+      const seconds = String(now.getSeconds()).padStart(2, '0');
+
+      return `MM_${year}${month}${day}${hours}${minutes}${seconds}`;
+    }
+
+    // Gán mã mượn tự động vào trường mamuon
+    $('#mamuon').val(generateMamuon());
+
+    // Validate form
     $("#frmCreateMuonsach").validate({
       rules: {
         mamuon: {
@@ -123,14 +149,6 @@ Thêm Mới Mượn Sách
         },
       },
       messages: {
-        mamuon: {
-          required: "Vui lòng nhập mã mượn sách",
-          minlength: "Mã mượn phải có ít nhất 3 ký tự",
-          maxlength: "Mã mượn không được vượt quá 50 ký tự"
-        },
-        hantra: {
-          required: "Vui lòng nhập hạn trả sách"
-        },
         soluong: {
           required: "Vui lòng nhập số lượng sách mượn"
         },
@@ -174,8 +192,5 @@ Thêm Mới Mượn Sách
       }
     });
   });
-  
 </script>
-
-
 @endsection
