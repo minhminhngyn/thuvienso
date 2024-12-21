@@ -79,7 +79,7 @@ Chỉnh Sửa Mượn Sách
     <div class="col-md-6">
       <div class="form-group">
         <label for="ngaytra">Ngày Trả</label>
-        <input type="text" class="form-control" id="ngaytra" name="ngaytra" aria-describedby="ngaytraHelp" placeholder="Vd: 12/11/2019 " value="{{ old('ngaytra', $muonsach->ngaytra) }}">
+        <input type="text" class="form-control" id="ngaytra" name="ngaytra" aria-describedby="ngaytraHelp" placeholder="Vd: 12/11/2019 " value="{{ old('ngaytra', $muonsach->ngaytra) }}" readonly>
       </div>
     </div>
     <div class="col-md-6">

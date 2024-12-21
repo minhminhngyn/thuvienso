@@ -38,16 +38,16 @@ class MuonsachController extends Controller
         JOIN qltv_nxb xb ON xb.id = s.nxb_id
         GROUP BY ms.id, ms.mamuon, ms.ngaymuon, ms.hantra, ms.soluong, ms.ngaytra, ms.tinhtrang,
             dg.tendocgia, dg.chucvu, dg.gioitinh, dg.namsinh, dg.diachi, dg.sdt, dg.email, dg.quequan,
-            tt.tenthuthu, tt.mathuthu, tt.chucvu, tt.gioitinh, tt.namsinh, tt.diachi, tt.sdt, tt.email, tt.quequan,
+            tt.tenthuthu, tt.mathuthu, tt.gioitinh, tt.namsinh, tt.diachi, tt.sdt, tt.email, tt.quequan,
             s.tensach, s.tentacgia, tl.tentheloai, xb.tennxb
 EOT; //chuỗi có xuống dòng
         // Raw SQL
 
         $list = DB::select($sql); // Phân trang cho dữ liệu
-        $list = Qltv_Muonsach::paginate(5);
-        $users= DB::table('qltv_muonsach')->paginate(5); // Hiển thị Phân Trang
+        //$list = Qltv_Muonsach::paginate(5);
+        //$users= DB::table('qltv_muonsach')->paginate(5); // Hiển thị Phân Trang
         return view('backend.muonsach.index')
-            ->with('listMuonsach', $users);
+        ->with('listMuonsach', $list);
 
     }
     
