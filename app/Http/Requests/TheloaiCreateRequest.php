@@ -26,6 +26,7 @@ class TheloaiCreateRequest extends FormRequest
     public function rules()
     {
         return [
+            'matheloai'                 => 'required|min:3|max:20|unique:qltv_theloai', //tên table qtlv_theloai
             'tentheloai'                => 'required|min:3|max:500',
         ];
     }

@@ -37,9 +37,6 @@ class SachCreateRequest extends FormRequest
     }
     public function messages() {
         return [
-            'masach.required'       => 'Vui lòng nhập mã sách',
-            'masach.min'            => 'Vui lòng nhập mã sách ít nhất 3 ký tự',
-            'masach.max'            => 'Vui lòng nhập mã sách tối đa 50 ký tự',
             'masach.unique'         => 'Mã sách này đã tồn tại. Vui lòng nhập mã khác',
 
             'tensach.required'      => 'Vui lòng nhập tên sách',

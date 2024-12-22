@@ -100,7 +100,61 @@ Thêm mới Đọc Giả
 
 @section('custom-scripts')
 <script>
-  
+// Kiểm tra và khởi tạo giá trị đếm trong localStorage nếu chưa có
+if (!localStorage.getItem('currentCount')) {
+    localStorage.setItem('currentCount', 1); // Bắt đầu từ 1
+}
+
+// Hàm tạo mã độc giả với cấu trúc DG_<chucvu>_<id>
+function generateMaDG() {
+    const chucvu = $('#chucvu').val().trim(); // Lấy giá trị chức vụ
+    let currentCount = parseInt(localStorage.getItem('currentCount'), 10); // Lấy ID hiện tại
+    currentCount++; // Tăng giá trị ID
+    localStorage.setItem('currentCount', currentCount); // Lưu giá trị mới vào localStorage
+
+    const id = String(currentCount).padStart(3, '0'); // Định dạng ID 3 chữ số
+    
+    // Nếu người dùng chưa nhập chức vụ, trả về mã mặc định
+    if (!chucvu) {
+        return `DG__${id}`;
+    }
+
+    // Tạo phần <chucvuCode> từ các chữ cái đầu của mỗi từ
+    const chucvuCode = chucvu
+        .split(/\s+/) // Tách chức vụ thành các từ (xử lý nhiều dấu cách)
+        .map(word => word.charAt(0).toUpperCase()) // Lấy ký tự đầu của mỗi từ, viết hoa
+        .join(''); // Ghép các ký tự đầu thành chuỗi
+
+    // Trả về mã độc giả hoàn chỉnh
+    return `DG_${chucvuCode}_${id}`;
+}
+
+// Hàm cập nhật mã độc giả trong input
+function updateMaDG() {
+    $('#madocgia').val(generateMaDG());
+}
+
+// Cập nhật mã độc giả ban đầu
+updateMaDG();
+
+// Lắng nghe sự kiện khi nhập vào trường chức vụ
+$('#chucvu').on('input', function() {
+    updateMaDG(); // Cập nhật mã độc giả khi chức vụ thay đổi
+});
+
+// Xử lý khi người dùng nhấn nút lưu
+$('#saveButton').click(function() {
+    // Lấy mã độc giả và thông tin chức vụ
+    const madocgia = $('#madocgia').val();
+    const chucvu = $('#chucvu').val().trim();
+    // Hiển thị hoặc gửi thông tin
+    console.log(`Mã độc giả: ${madocgia}, Chức vụ: ${chucvu || 'Không nhập'}`);
+    alert(`Mã độc giả được lưu: ${madocgia}`);
+
+    // Reset form
+    $('#chucvu').val('');
+    updateMaDG(); // Cập nhật mã mới
+});
   $(document).ready(function() {
     $("#frmCreateDocgia").validate({
       rules: {

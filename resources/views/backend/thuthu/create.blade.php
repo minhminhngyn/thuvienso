@@ -25,7 +25,7 @@ Thêm mới Thủ Thư
   {{ csrf_field() }} 
   <div class="form-group">
     <label for="mathuthu">Mã Thủ thư</label>
-    <input type="text" class="form-control" id="mathuthu" name="mathuthu" aria-describedby="mathuthuHelp" placeholder="Nhập mã Thủ thư . . ." value="{{ old('mathuthu') }}">
+    <input type="text" class="form-control" id="mathuthu" name="mathuthu" aria-describedby="mathuthuHelp" value="{{ old('mathuthu') }}"readonly>
 
   </div>
   <div class="form-group">
@@ -77,14 +77,43 @@ Thêm mới Thủ Thư
 
 @section('custom-scripts')
 <script>
+  // Kiểm tra xem trong localStorage đã có giá trị đếm chưa, nếu chưa thì gán giá trị mặc định là 1
+if (!localStorage.getItem('currentID')) {
+    localStorage.setItem('currentID', 100000); // Khởi tạo số ID bắt đầu từ 100000
+}
+
+// Hàm tạo mã thủ thư
+function generateMaThuThu() {
+    // Lấy số ID ngẫu nhiên từ localStorage và đảm bảo là duy nhất
+    let currentID = parseInt(localStorage.getItem('currentID'), 10);
+    
+    // Tạo mã thủ thư với ID là 6 chữ số
+    const maThuThu = `TT_${String(currentID).padStart(6, '0')}`;
+
+    // Cập nhật số ID tiếp theo trong localStorage (tăng dần)
+    localStorage.setItem('currentID', currentID + 1);
+
+    // Trả về mã thủ thư
+    return maThuThu;
+}
+
+// Cập nhật mã thủ thư ban đầu vào trường input
+$('#mathuthu').val(generateMaThuThu());  // Mã thủ thư sẽ có cấu trúc TT_<id>
+
+// Khi nhấn nút lưu, tạo mã thủ thư và lưu lại
+$('#saveButton').click(function() {
+    const maThuThu = generateMaThuThu(); // Tạo mã thủ thư
+
+    // Cập nhật mã thủ thư vào trường input
+    $('#mathuthu').val(maThuThu);
+
+    // Lưu thông tin thủ thư vào localStorage hoặc xử lý tiếp theo
+    localStorage.setItem('thuThu_' + maThuThu, 'Thủ thư: ' + maThuThu);  // Lưu tên thủ thư theo mã thủ thư
+});
+
   $(document).ready(function() {
     $("#frmCreateThuthu").validate({
       rules: {
-        mathuthu: {
-          required: true,
-          minlength: 3,
-          maxlength: 50
-        },
         tenthuthu: {
           required: true,
           minlength: 3,
@@ -117,11 +146,6 @@ Thêm mới Thủ Thư
         },
       },
       messages: {
-        mathuthu: {
-          required: "Vui lòng nhập mã Thủ thư",
-          minlength: "Mã Thủ thư phải có ít nhất 3 ký tự",
-          maxlength: "Mã Thủ thư không được vượt quá 50 ký tự"
-        },
         tenthuthu: {
           required: "Vui lòng nhập tên Thủ thư",
           minlength: "Tên Thủ thư phải có ít nhất 3 ký tự",

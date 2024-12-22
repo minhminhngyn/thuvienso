@@ -26,31 +26,21 @@ class ThuthuCreateRequest extends FormRequest
         return [
             'mathuthu'                => 'required|min:3|max:50|unique:qltv_thuthu', //tên table qtlv_thuthu
             'tenthuthu'               => 'required|min:3|max:200',
-            'chucvu'                  => 'required|min:6|max:200',
             'gioitinh'                => 'required|min:2|max:200',
             'namsinh'                 => 'required|min:4|max:200',
             'diachi'                  => 'required|min:6|max:500',
             'sdt'                     => 'required|min:9|max:25',
             'email'                   => 'required|min:6|max:200',
             'quequan'                 => 'required|min:6|max:200',
-            'khoa_id'                 => 'required',
-            'nganh_id'                => 'required',
         ];
     }
     public function messages() {
         return [
-            'mathuthu.required'       => 'Vui lòng nhập mã thủ thư',
-            'mathuthu.min'            => 'Vui lòng nhập mã thủ thư ít nhất 3 ký tự',
-            'mathuthu.max'            => 'Vui lòng nhập mã thủ thư tối đa 50 ký tự',
             'mathuthu.unique'         => 'Mã thủ thư này đã tồn tại. Vui lòng nhập mã khác',
 
             'tenthuthu.required'      => 'Vui lòng nhập tên thủ thư',
             'tenthuthu.min'           => 'Vui lòng nhập tên thủ thư ít nhất 3 ký tự',
             'tenthuthu.max'           => 'Vui lòng nhập tên thủ thư tối đa 200 ký tự',
-
-            'chucvu.required'    => 'Vui lòng nhập chức vụ',
-            'chucvu.min'         => 'Vui lòng nhập chức vụ ít nhất 6 ký tự',
-            'chucvu.max'         => 'Vui lòng nhập chức vụ tối đa 200 ký tự',
 
             'gioitinh.required'    => 'Vui lòng nhập giới tính',
             'gioitinh.min'         => 'Vui lòng nhập giới tính ít nhất 2 ký tự',
@@ -75,10 +65,6 @@ class ThuthuCreateRequest extends FormRequest
             'quequan.required'    => 'Vui lòng nhập địa chỉ quê quán',
             'quequan.min'         => 'Vui lòng nhập địa chỉ quê quán ít nhất 6 ký tự',
             'quequan.max'         => 'Vui lòng nhập địa chỉ quê quán tối đa 200 ký tự',
-
-            'khoa_id.required'   => 'Vui lòng chọn khoa',
-
-            'nganh_id.required'       => 'Vui lòng chọn ngành'
         ];
     }
 }

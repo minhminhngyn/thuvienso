@@ -39,9 +39,6 @@ class DocgiaCreateRequest extends FormRequest
     }
     public function messages() {
         return [
-            'madocgia.required'       => 'Vui lòng nhập mã đọc giả',
-            'madocgia.min'            => 'Vui lòng nhập mã đọc giả ít nhất 3 ký tự',
-            'madocgia.max'            => 'Vui lòng nhập mã đọc giả tối đa 50 ký tự',
             'madocgia.unique'         => 'Mã đọc giả này đã tồn tại. Vui lòng nhập mã khác',
 
             'tendocgia.required'      => 'Vui lòng nhập tên đọc giả',

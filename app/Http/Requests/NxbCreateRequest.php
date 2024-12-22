@@ -30,9 +30,6 @@ class NxbCreateRequest extends FormRequest
     }
     public function messages() {
         return [
-            'manxb.required'    => 'Vui lòng nhập mã nhà xuất bản',
-            'manxb.min'         => 'Vui lòng nhập mã nhà xuất bản ít nhất 3 ký tự',
-            'manxb.max'         => 'Vui lòng nhập mã nhà xuất bản tối đa 20 ký tự',
             'manxb.unique'      => 'Mã nhà xuất bản này đã tồn tại. Vui lòng nhập mã khác',
 
             'tennxb.required'   => 'Vui lòng nhập tên nhà xuất bản',

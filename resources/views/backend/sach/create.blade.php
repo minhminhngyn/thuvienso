@@ -25,7 +25,7 @@ Thêm mới Sách
   {{ csrf_field() }}
   <div class="form-group">
     <label for="masach">Mã Sách</label>
-    <input type="text" class="form-control" id="masach" name="masach" aria-describedby="masachHelp" placeholder="Nhập mã sách . . ." value="{{ old('masach') }}">
+    <input type="text" class="form-control" id="masach" name="masach" aria-describedby="masachHelp" value="{{ old('masach') }}"readonly>
 
   </div>
   <div class="form-group">
@@ -82,14 +82,71 @@ Thêm mới Sách
 
 @section('custom-scripts')
 <script>
+// Kiểm tra và khởi tạo giá trị đếm trong localStorage nếu chưa có
+if (!localStorage.getItem('currentBookCount')) {
+    localStorage.setItem('currentBookCount', 1); // Bắt đầu từ 1
+}
+
+// Hàm tạo mã sách với cấu trúc <id>_<theloai>_<tensach>
+function generateBookCode() {
+    const theloai_id = $('#theloai_id').val().trim(); // Lấy giá trị thể loại ID (theloai_id)
+    const tensach = $('#tensach').val().trim(); // Lấy giá trị tên sách
+    let currentCount = parseInt(localStorage.getItem('currentBookCount'), 10); // Lấy ID hiện tại
+    currentCount++; // Tăng giá trị ID
+    localStorage.setItem('currentBookCount', currentCount); // Lưu giá trị mới vào localStorage
+
+    const id = String(currentCount).padStart(2, '0'); // Định dạng ID 2 chữ số
+
+    // Nếu không có tên sách và thể loại, trả về mã mặc định
+    if (!theloai_id && !tensach) {
+        return `${id}__`; // Trả về mã mặc định với format id__
+    }
+
+    // Tạo phần <theloaiCode> từ giá trị thể loại (theloai_id)
+    const theloaiCode = theloai_id; // Giả sử thể loại đã được lưu dưới dạng ID, không cần chuyển đổi
+
+    // Tạo phần <tensachCode> từ các chữ cái đầu của mỗi từ trong tên sách
+    const tensachCode = tensach
+        .split(/\s+/) // Tách tên sách thành các từ (xử lý nhiều dấu cách)
+        .map(word => word.charAt(0).toUpperCase()) // Lấy ký tự đầu của mỗi từ, viết hoa
+        .join(''); // Ghép các ký tự đầu thành chuỗi
+
+    // Trả về mã sách hoàn chỉnh
+    return `${id}_${theloaiCode}_${tensachCode}`;
+}
+
+// Hàm cập nhật mã sách trong input
+function updateBookCode() {
+    $('#masach').val(generateBookCode());
+}
+
+// Cập nhật mã sách ban đầu
+updateBookCode();
+
+// Lắng nghe sự kiện khi nhập vào trường thể loại hoặc tên sách
+$('#theloai_id, #tensach').on('input', function() {
+    updateBookCode(); // Cập nhật mã sách khi thể loại hoặc tên sách thay đổi
+});
+
+// Xử lý khi người dùng nhấn nút lưu
+$('#saveButton').click(function() {
+    // Lấy mã sách và thông tin thể loại, tên sách
+    const masach = $('#masach').val();
+    const theloai_id = $('#theloai_id').val().trim();
+    const tensach = $('#tensach').val().trim();
+    // Hiển thị hoặc gửi thông tin
+    console.log(`Mã sách: ${masach}, Thể loại ID: ${theloai_id || 'Không nhập'}, Tên sách: ${tensach || 'Không nhập'}`);
+    alert(`Mã sách được lưu: ${masach}`);
+
+    // Reset form
+    $('#theloai_id').val('');
+    $('#tensach').val('');
+    updateBookCode(); // Cập nhật mã mới
+});
+
   $(document).ready(function() {
     $("#frmCreateSach").validate({
       rules: {
-        masach: {
-          required: true,
-          minlength: 3,
-          maxlength: 50
-        },
         tensach: {
           required: true,
           minlength: 3,
@@ -114,11 +171,6 @@ Thêm mới Sách
         },
       },
       messages: {
-        masach: {
-          required: "Vui lòng nhập mã sách",
-          minlength: "Mã sách phải có ít nhất 3 ký tự",
-          maxlength: "Mã sách không được vượt quá 50 ký tự"
-        },
         tensach: {
           required: "Vui lòng nhập tên sách",
           minlength: "Tên sách phải có ít nhất 3 ký tự",
