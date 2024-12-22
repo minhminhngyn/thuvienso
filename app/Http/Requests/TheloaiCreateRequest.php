@@ -26,15 +26,11 @@ class TheloaiCreateRequest extends FormRequest
     public function rules()
     {
         return [
-            'matheloai'                 => 'required|min:3|max:20|unique:qltv_theloai', //tên table qtlv_theloai
             'tentheloai'                => 'required|min:3|max:500',
         ];
     }
     public function messages() {
         return [
-            'matheloai.required'        => 'Vui lòng nhập mã thể loại',
-            'matheloai.min'             => 'Vui lòng nhập mã thể loại ít nhất 3 ký tự',
-            'matheloai.max'             => 'Vui lòng nhập mã thể loại tối đa 20 ký tự',
             'matheloai.unique'          => 'Mã thể loại này đã tồn tại. Vui lòng nhập mã khác',
 
             'tentheloai.required'       => 'Vui lòng nhập tên thể loại',

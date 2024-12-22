@@ -21,7 +21,7 @@ Thêm Mới Nhà Xuất Bản
     {{ csrf_field() }}
   <div class="form-group" >
     <label for="manxb">Mã Nhà Xuất Bản</label>
-    <input type="text" class="form-control" id="manxb" name="manxb" aria-describedby="manxbHelp" placeholder="Nhập mã Nhà Xuất Bản . . .">
+    <input type="text" class="form-control" id="manxb" name="manxb" aria-describedby="manxbHelp"readonly>
     
   </div>
   <div class="form-group" >
@@ -35,14 +35,63 @@ Thêm Mới Nhà Xuất Bản
 @endsection
 @section('custom-scripts')
 <script>
+// Kiểm tra xem trong localStorage đã có giá trị đếm chưa, nếu chưa thì gán giá trị mặc định là 1
+if (!localStorage.getItem('currentCount')) {
+    localStorage.setItem('currentCount', 1); // Khởi tạo nếu chưa có
+}
+
+// Hàm tạo mã nhà xuất bản theo định dạng NXB_<group> (chỉ có group, không có id)
+function generateMaNXB() {
+    // Lấy tên nhà xuất bản từ input (bỏ qua "Nhà xuất bản")
+    const tennxb = $('#tennxb').val().trim();
+
+    // Lấy phần "group" từ các từ còn lại sau "Nhà xuất bản"
+    const group = tennxb.replace('Nhà xuất bản', '')  // Loại bỏ "Nhà xuất bản" khỏi tên
+        .trim()  // Loại bỏ khoảng trắng đầu và cuối
+        .split(' ')  // Tách tên thành các từ
+        .map(word => word.charAt(0).toUpperCase())  // Lấy ký tự đầu của mỗi từ và viết hoa
+        .join('');  // Ghép các ký tự đầu lại thành một chuỗi
+
+    // Tạo mã nhà xuất bản theo định dạng NXB_<group> (chỉ có group)
+    const manxb = `NXB_${group}`;
+
+    // Trả về mã nhà xuất bản để có thể sử dụng ngoài hàm
+    return manxb;
+}
+
+// Cập nhật mã nhà xuất bản ban đầu vào trường input
+$('#manxb').val(generateMaNXB());  // Mã nhà xuất bản sẽ có cấu trúc NXB_<group>
+
+// Khi người dùng nhập tên nhà xuất bản
+$('#tennxb').on('input', function() {
+    const manxb = generateMaNXB();  // Tạo mã nhà xuất bản với group
+    $('#manxb').val(manxb);         // Cập nhật mã nhà xuất bản vào trường input
+});
+
+// Khi nhấn nút lưu, thêm phần group vào mã nhà xuất bản và lưu lại
+$('#saveButton').click(function() {
+    const tennxb = $('#tennxb').val().trim(); // Lấy tên nhà xuất bản từ input
+
+    // Tạo phần group từ các chữ cái đầu của các từ còn lại sau "Nhà xuất bản"
+    const group = tennxb.replace('Nhà xuất bản', '')  // Loại bỏ "Nhà xuất bản" khỏi tên
+        .trim()  // Loại bỏ khoảng trắng đầu và cuối
+        .split(' ')  // Tách tên thành các từ
+        .map(word => word.charAt(0).toUpperCase())  // Lấy ký tự đầu của mỗi từ và viết hoa
+        .join('');  // Ghép các ký tự đầu lại thành một chuỗi
+
+    // Lấy mã nhà xuất bản đã được tạo với group
+    let manxb = `NXB_${group}`;
+
+    // Cập nhật mã nhà xuất bản vào trường input
+    $('#manxb').val(manxb);
+
+    // Lưu thông tin nhà xuất bản vào localStorage hoặc xử lý tiếp theo
+    localStorage.setItem('Nxb_' + manxb, tennxb);  // Lưu tên nhà xuất bản theo mã nhà xuất bản
+});
+
   $(document).ready(function() {
     $("#frmCreateNxb").validate({
       rules: {
-        manxb: {
-          required: true,
-          minlength: 3,
-          maxlength: 20
-        },
         tennxb: {
           required: true,
           minlength: 3,
@@ -50,11 +99,6 @@ Thêm Mới Nhà Xuất Bản
         },
       },
       messages: {
-        manxb: {
-          required: "Vui lòng nhập mã Nhà Xuất Bản",
-          minlength: "Mã Nhà Xuất Bản phải có ít nhất 3 ký tự",
-          maxlength: "Mã Nhà Xuất Bản không được vượt quá 20 ký tự"
-        },
         tennxb: {
           required: "Vui lòng nhập tên Nhà Xuất Bản",
           minlength: "Tên Nhà Xuất Bản phải có ít nhất 3 ký tự",

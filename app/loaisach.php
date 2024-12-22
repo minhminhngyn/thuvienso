@@ -12,5 +12,5 @@ class loaisach extends Model
   	}
   	  public function sach(){
     	return $this->hasMany('App\sach','madanhmuc','id');
-    }
+    }	
 }

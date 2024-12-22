@@ -25,7 +25,7 @@ Sửa Thông Tin Sách
   {{ csrf_field() }}
   <div class="form-group">
     <label for="masach">Mã Sách</label>
-    <input type="text" class="form-control" id="masach" name="masach" aria-describedby="masachHelp" placeholder="Nhập mã sách . . . " value="{{ old('masach', $sach->masach) }}">
+    <input type="text" class="form-control" id="masach" name="masach" aria-describedby="masachHelp" value="{{ old('masach', $sach->masach) }}"readonly>
    
   </div>
   <div class="form-group">

@@ -56,7 +56,7 @@ Thêm mới Sách
     @endif
   </div>
   <div class="form-group">
-    <label for="theloai_id">sách</label>
+    <label for="theloai_id">Thể loại</label>
     <select id="theloai_id" name="theloai_id" class="form-control">
       @foreach($listTheloai as $theloai)
         @if(old('theloai_id') == $theloai->id)

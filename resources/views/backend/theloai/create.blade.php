@@ -21,7 +21,7 @@ Thêm Mới Thể Loại Sách
     {{ csrf_field() }}
   <div class="form-group" >
     <label for="matheloai">Mã Thể Loại Sách</label>
-    <input type="text" class="form-control" id="matheloai" name="matheloai" aria-describedby="matheloaiHelp" placeholder="Nhập mã Thể Loại Sách . . .">
+    <input type="text" class="form-control" id="matheloai" name="matheloai" aria-describedby="matheloaiHelp" readonly>
     
   </div>
   <div class="form-group" >
@@ -35,6 +35,58 @@ Thêm Mới Thể Loại Sách
 @endsection
 @section('custom-scripts')
 <script>
+// Kiểm tra xem trong localStorage đã có giá trị đếm chưa, nếu chưa thì gán giá trị mặc định là 1
+// Kiểm tra xem trong localStorage đã có giá trị đếm chưa, nếu chưa thì gán giá trị mặc định là 1
+if (!localStorage.getItem('currentCount')) {
+    localStorage.setItem('currentCount', 1); // Khởi tạo nếu chưa có
+}
+
+// Hàm tạo mã thể loại theo định dạng TL_<group> (chỉ còn group mà không có id)
+function generateMatheloai() {
+    // Lấy tên thể loại từ input
+    const tentheloai = $('#tentheloai').val().trim();
+
+    // Tạo phần group từ các chữ cái đầu của mỗi từ trong tên thể loại
+    const group = tentheloai.split(' ')  // Tách tên thể loại thành các từ
+        .map(word => word.charAt(0).toUpperCase())  // Lấy ký tự đầu của mỗi từ và viết hoa
+        .join('');  // Ghép các ký tự đầu lại thành một chuỗi
+
+    // Tạo mã thể loại theo định dạng TL_<group> (chỉ có group)
+    const matheloai = `TL_${group}`;
+
+    // Trả về mã thể loại để có thể sử dụng ngoài hàm
+    return matheloai;
+}
+
+// Cập nhật mã thể loại ban đầu vào trường input
+$('#matheloai').val(generateMatheloai());  // Mã thể loại sẽ có cấu trúc TL_<group>
+
+// Khi người dùng nhập tên thể loại
+$('#tentheloai').on('input', function() {
+    const matheloai = generateMatheloai();  // Tạo mã thể loại với group
+    $('#matheloai').val(matheloai);         // Cập nhật mã thể loại vào trường input
+});
+
+// Khi nhấn nút lưu, thêm phần group vào mã thể loại và lưu lại
+$('#saveButton').click(function() {
+    const tentheloai = $('#tentheloai').val().trim(); // Lấy tên thể loại từ input
+
+    // Tạo phần group từ các chữ cái đầu của mỗi từ trong tên thể loại
+    const group = tentheloai.split(' ')  // Tách tên thể loại thành các từ
+        .map(word => word.charAt(0).toUpperCase())  // Lấy ký tự đầu của mỗi từ và viết hoa
+        .join('');  // Ghép các ký tự đầu lại thành một chuỗi
+
+    // Lấy mã thể loại đã được tạo với group
+    let matheloai = `TL_${group}`;
+
+    // Cập nhật mã thể loại vào trường input
+    $('#matheloai').val(matheloai);
+
+    // Lưu thông tin thể loại vào localStorage hoặc xử lý tiếp theo
+    localStorage.setItem('theLoai_' + matheloai, tentheloai);  // Lưu tên thể loại theo mã thể loại
+});
+
+
   $(document).ready(function() {
     $("#frmCreateTheloai").validate({
       rules: {
@@ -50,11 +102,6 @@ Thêm Mới Thể Loại Sách
         },
       },
       messages: {
-        matheloai: {
-          required: "Vui lòng nhập mã thể loại sách",
-          minlength: "Mã thể loại sách phải có ít nhất 3 ký tự",
-          maxlength: "Mã thể loại sách không được vượt quá 20 ký tự"
-        },
         tentheloai: {
           required: "Vui lòng nhập tên thể loại sách",
           minlength: "Tên thể loại sách phải có ít nhất 3 ký tự",

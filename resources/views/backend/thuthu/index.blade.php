@@ -13,9 +13,7 @@ Danh Sách Thủ Thư
         <tr class="table-success" >
             <th colspan="2">Chức Năng</th>
             <th>Mã Thủ Thư</th>
-            <th>Tên Thủ Thư</th>
-            <th>Khoa</th>
-            <th>Ngành</th>   
+            <th>Tên Thủ Thư</th> 
             <th>Giới Tính</th>
             <th>Năm Sinh</th>
             <th>Địa Chỉ</th>
@@ -44,8 +42,6 @@ Danh Sách Thủ Thư
             </td>
             <td>{{$thuthu->mathuthu}}</td>
             <td>{{$thuthu->tenthuthu}}</td>
-            <td>{{$thuthu->khoa->tenkhoa}}</td>
-            <td>{{$thuthu->nganh->tennganh}}</td>
             <td>{{$thuthu->gioitinh}}</td>
             <td>{{$thuthu->namsinh}}</td>
             <td>{{$thuthu->diachi}}</td>

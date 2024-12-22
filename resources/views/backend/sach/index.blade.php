@@ -17,8 +17,8 @@ Danh Sách Sách
             <th>Ảnh</th>
             <th>Thể Loại</th>
             <th>Nhà Xuất Bản</th>
-            <th>Số Lượng Sách</th>
-            <th>Trạng Thái Sách</th>         
+            <th>Số Lượng</th>
+            <th>Trạng Thái</th>         
             <th colspan="2">Chức Năng</th>
         </tr>
     </thead>

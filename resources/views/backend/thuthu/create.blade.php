@@ -70,26 +70,6 @@ Thêm mới Thủ Thư
     <input type="text" class="form-control" id="quequan" name="quequan" aria-describedby="quequanHelp" placeholder="Nhập quê quán . . ." value="{{ old('quequan') }}">
     
   </div>
-  <div class="form-group">
-    <label for="khoa_id">Khoa</label>
-    <select id="khoa_id" name="khoa_id" class="form-control">
-      @foreach($listKhoa as $khoa)
-        @if(old('khoa_id') == $khoa->id)
-        <option value="{{ $khoa->id }}" selected>{{ $khoa->tenkhoa }}</option>
-        @else
-        <option value="{{ $khoa->id }}">{{ $khoa->tenkhoa }}</option>
-        @endif
-      @endforeach
-    </select>
-  </div>
-  <div class="form-group">
-    <label for="nganh_id">Ngành</label>
-    <select id="nganh_id" name="nganh_id" class="form-control">
-      @foreach($listNganh as $nganh)
-      <option value="{{ $nganh->id }}">{{ $nganh->tennganh }}</option>
-      @endforeach
-    </select>
-  </div>
   <a class="btn btn-primary" href="{{ url('backend/thuthu') }}" class="btn">Quay về</a>
   <button type="submit" class="btn btn-primary">Lưu</button>
 </form>

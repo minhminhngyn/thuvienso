@@ -66,26 +66,6 @@ Sửa Thông Tin Thủ Thư
     <input type="text" class="form-control" id="quequan" name="quequan" aria-describedby="quequanHelp" placeholder="Nhập quê quán . . ." value="{{ old('quequan', $thuthu->quequan) }}">
     
   </div>
-  <div class="form-group">
-    <label for="khoa_id">Khoa</label>
-    <select id="khoa_id" name="khoa_id" class="form-control">
-      @foreach($listKhoa as $khoa)
-        @if(old('khoa_id', $thuthu->khoa_id) == $khoa->id)
-        <option value="{{ $khoa->id }}" selected>{{ $khoa->tenkhoa }}</option>
-        @else
-        <option value="{{ $khoa->id }}">{{ $khoa->tenkhoa }}</option>
-        @endif
-      @endforeach
-    </select>
-  </div>
-  <div class="form-group">
-    <label for="nganh_id">Ngành</label>
-    <select id="nganh_id" name="nganh_id" class="form-control">
-      @foreach($listNganh as $nganh)
-      <option value="{{ $nganh->id }}">{{ $nganh->tennganh }}</option>
-      @endforeach
-    </select>
-  </div>
   <a href="{{ url('admin/thuthu') }}" class="btn">Quay về</a>
   <button type="submit" class="btn btn-primary">Lưu</button>
 </form>
@@ -131,12 +111,6 @@ Sửa Thông Tin Thủ Thư
           minlength: 6,
           maxlength: 200
         },
-        khoa_id: {
-          required: true
-        },
-        nganh_id: {
-          required: true
-        },
       },
       messages: {
         mathuthu: {
@@ -173,12 +147,6 @@ Sửa Thông Tin Thủ Thư
           required: "Vui lòng nhập địa chỉ quê quán",
           minlength: "Địa chỉ quê quán phải có ít nhất 6 ký tự",
           maxlength: "Địa chỉ quê quán không được vượt quá 200 ký tự"
-        },
-        khoa_id:{
-          required: "Vui lòng chọn khoa"
-        },
-        nganh_id:{
-          required: "Vui lòng chọn ngành"
         },
       },
       errorElement: "em",

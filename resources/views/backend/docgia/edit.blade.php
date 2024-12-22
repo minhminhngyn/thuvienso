@@ -25,7 +25,7 @@ Sửa Thông Tin Đọc Giả
   {{ csrf_field() }}
   <div class="form-group">
     <label for="madocgia">Mã Đọc Giả</label>
-    <input type="text" class="form-control" id="madocgia" name="madocgia" aria-describedby="madocgiaHelp" placeholder="Nhập mã đọc giả . . . " value="{{ old('madocgia', $docgia->madocgia) }}">
+    <input type="text" class="form-control" id="madocgia" name="madocgia" aria-describedby="madocgiaHelp" value="{{ old('madocgia', $docgia->madocgia) }}"readonly>
    
   </div>
   <div class="form-group">
@@ -104,11 +104,6 @@ Sửa Thông Tin Đọc Giả
   $(document).ready(function() {
     $("#frmEditdocgia").validate({
       rules: {
-        madocgia: {
-          required: true,
-          minlength: 3,
-          maxlength: 50
-        },
         tendocgia: {
           required: true,
           minlength: 3,
@@ -147,11 +142,6 @@ Sửa Thông Tin Đọc Giả
         },
       },
       messages: {
-        madocgia: {
-          required: "Vui lòng nhập mã đọc giả",
-          minlength: "Mã đọc giả phải có ít nhất 3 ký tự",
-          maxlength: "Mã đọc giả không được vượt quá 50 ký tự"
-        },
         tendocgia: {
           required: "Vui lòng nhập tên đọc giả",
           minlength: "Tên đọc giả phải có ít nhất 3 ký tự",

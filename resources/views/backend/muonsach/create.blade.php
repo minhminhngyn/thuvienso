@@ -127,11 +127,6 @@ Thêm Mới Mượn Sách
     // Validate form
     $("#frmCreateMuonsach").validate({
       rules: {
-        mamuon: {
-          required: true,
-          minlength: 3,
-          maxlength: 50
-        },
         hantra: {
           required: true
         },
