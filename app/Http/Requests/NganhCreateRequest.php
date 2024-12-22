@@ -31,7 +31,7 @@ class NganhCreateRequest extends FormRequest
     public function messages() {
         return [
             'manganh.required'      => 'Vui lòng nhập mã ngành',
-            'manganh.min'           => 'Vui lòng nhập mã ngành ít nhất 3 ký tự',
+            'm6anganh.min'           => 'Vui lòng nhập mã ngành ít nhất 3 ký tự',
             'manganh.max'           => 'Vui lòng nhập mã ngành tối đa 20 ký tự',
             'manganh.unique'        => 'Mã ngành này đã tồn tại. Vui lòng nhập mã khác',
 
